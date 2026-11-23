@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
-import { logout } from '@octue/allauth-js/core'
+import { logout } from '@windpioneers/allauth-js/core'
 import {
   ArrowPath,
   Button,
   Logout as LogoutIcon,
   Return as ReturnIcon,
-} from '@octue/allauth-js/react'
+} from '@windpioneers/allauth-js/react'
 import { FormLayout } from '@/components/layout/FormLayout'
 
 export default function Logout() {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { Dark, Light } from '@octue/allauth-js/react'
+import { Dark, Light } from '@windpioneers/allauth-js/react'
 
 export const ThemeToggle: React.FC = () => {
   const [isDark, setIsDark] = useState(false)

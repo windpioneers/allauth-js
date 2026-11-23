@@ -8,7 +8,7 @@ permissions:
   contents: write # Publish GitHub release
   issues: write # Comment on released issues
   pull-requests: write # Comment on released PRs
-  id-token: write # OIDC (npm provenance if you later publish to npm)
+  id-token: write # OIDC for npm trusted publishing and provenance
 
 jobs:
   release:
@@ -29,19 +29,12 @@ jobs:
         with:
           run_install: false
 
-      # - name: Configure npm auth
-      #   env:
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #   run: |
-      #     echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
-
       - name: Setup Node.js (with pnpm cache)
         uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
           cache: "pnpm"
           cache-dependency-path: "pnpm-lock.yaml"
-          registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies (lockfile strict)
         run: pnpm install --frozen-lockfile
@@ -50,4 +43,3 @@ jobs:
         run: pnpm dlx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

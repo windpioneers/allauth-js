@@ -1,4 +1,4 @@
-import { Button, useAuthStatus, useUser } from '@octue/allauth-js/react'
+import { Button, useAuthStatus, useUser } from '@windpioneers/allauth-js/react'
 import Link from 'next/link'
 import { Header } from '@/components/layout/Header'
 

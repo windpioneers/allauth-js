@@ -1,6 +1,6 @@
 import type React from 'react'
 
-import { useAuthStatus, useUser } from '@octue/allauth-js/react'
+import { useAuthStatus, useUser } from '@windpioneers/allauth-js/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 

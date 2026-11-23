@@ -1,9 +1,9 @@
-import { AuthenticatedRoute } from '@octue/allauth-js/nextjs'
+import { AuthenticatedRoute } from '@windpioneers/allauth-js/nextjs'
 import {
   SessionsTable,
   SessionsTableSkeleton,
   useSessions,
-} from '@octue/allauth-js/react'
+} from '@windpioneers/allauth-js/react'
 import { SettingsLayout } from '@/components/layout/SettingsLayout'
 
 function SessionsPage() {

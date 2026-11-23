@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
-import { assertNever } from '@octue/allauth-js/core'
-import { AuthenticatedRoute } from '@octue/allauth-js/nextjs'
+import { assertNever } from '@windpioneers/allauth-js/core'
+import { AuthenticatedRoute } from '@windpioneers/allauth-js/nextjs'
 import {
   Button,
   EmailsTable,
   EmailsTableSkeleton,
   useEmails,
-} from '@octue/allauth-js/react'
+} from '@windpioneers/allauth-js/react'
 import { toast } from 'react-toastify'
 import { Modal } from '@/components/layout/Modal'
 import { SettingsLayout } from '@/components/layout/SettingsLayout'

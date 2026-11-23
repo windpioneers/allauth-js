@@ -1,4 +1,4 @@
-import { Button } from '@octue/allauth-js/react'
+import { Button } from '@windpioneers/allauth-js/react'
 import { FormLayout } from '@/components/layout/FormLayout'
 
 export default function VerifyEmail() {
