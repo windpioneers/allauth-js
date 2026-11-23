@@ -60,15 +60,28 @@ export function pathForPendingFlow(auth: AuthResponse): string | null {
   return null
 }
 
+export function getSafeNext(router: NextRouter): string | null {
+  const rawNext = router.query.next
+  const next = Array.isArray(rawNext) ? rawNext[0] : rawNext
+  if (!next || typeof window === 'undefined') {
+    return null
+  }
+  try {
+    const url = new URL(next, window.location.origin)
+    if (url.origin !== window.location.origin) {
+      return null
+    }
+    return `${url.pathname}${url.search}${url.hash}`
+  } catch {
+    return null
+  }
+}
+
 // Return the `next` target from the router query, or a default next value
 export function getNext(router: NextRouter, defaultNext: string): string {
-  // @ts-ignore
-  const next = new URLSearchParams(router.query).get('next') || defaultNext
+  const next = getSafeNext(router) ?? defaultNext
   console.log('NEXT', next)
   return next
-  // TODO Chatgpt says the following is typesafe but I need to check functionality...
-  // const rawNext = router.query.next
-  // return (Array.isArray(rawNext) ? rawNext[0] : rawNext) || defaultNext
 }
 
 /* Protects a route such that if you arrive on it whilst unauthenticated,
@@ -155,7 +168,8 @@ export function AuthChangeRedirector({
       if (auth) {
         const path = pathForPendingFlow(auth)
         if (path) {
-          router.push(path)
+          const next = getSafeNext(router)
+          router.push(next ? `${path}?next=${encodeURIComponent(next)}` : path)
           return null
         }
       }
