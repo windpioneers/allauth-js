@@ -341,6 +341,16 @@ pnpm storybook
 
 Open [http://localhost:6006](http://localhost:6006) to view the component library.
 
+### Tests
+
+Tests use [Vitest](https://vitest.dev) and sit next to the code they test, as `*.test.ts` or `*.test.tsx`. Run them with:
+
+```bash
+pnpm test
+```
+
+CI runs them on every pull request.
+
 ## License
 
 allauth-js is GPLv3 licensed and completely free for open-source use on codebases with compliant licenses.

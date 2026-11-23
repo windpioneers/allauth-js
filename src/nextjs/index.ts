@@ -3,6 +3,7 @@ export {
   AuthChangeRedirector,
   AuthenticatedRoute,
   getNext,
+  getSafeNext,
   pathForFlow,
   pathForPendingFlow,
   URLs,
