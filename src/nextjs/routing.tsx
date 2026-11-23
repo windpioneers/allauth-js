@@ -60,6 +60,8 @@ export function pathForPendingFlow(auth: AuthResponse): string | null {
   return null
 }
 
+const SAFE_NEXT_PROTOCOLS = ['http:', 'https:']
+
 export function getSafeNext(router: NextRouter): string | null {
   const rawNext = router.query.next
   const next = Array.isArray(rawNext) ? rawNext[0] : rawNext
@@ -67,11 +69,20 @@ export function getSafeNext(router: NextRouter): string | null {
     return null
   }
   try {
-    const url = new URL(next, window.location.origin)
-    if (url.origin !== window.location.origin) {
+    const { origin } = window.location
+    const url = new URL(next, origin)
+    if (url.origin !== origin || !SAFE_NEXT_PROTOCOLS.includes(url.protocol)) {
       return null
     }
-    return `${url.pathname}${url.search}${url.hash}`
+    const path = `${url.pathname}${url.search}${url.hash}`
+    if (
+      !path.startsWith('/') ||
+      path.startsWith('//') ||
+      new URL(path, origin).origin !== origin
+    ) {
+      return null
+    }
+    return path
   } catch {
     return null
   }
