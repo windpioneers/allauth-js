@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Button } from '@octue/allauth-js/react'
+import { Button } from '@windpioneers/allauth-js/react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { InputGroup } from '@/components/forms/fields/InputGroup'

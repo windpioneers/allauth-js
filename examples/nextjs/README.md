@@ -113,7 +113,7 @@ src/
 ### Using Authentication Hooks
 
 ```typescript
-import { useAuthStatus, useUser } from "@octue/allauth-js/react"
+import { useAuthStatus, useUser } from "@windpioneers/allauth-js/react"
 
 function MyComponent() {
   const { isAuthenticated, isLoading } = useAuthStatus()
@@ -136,7 +136,7 @@ function MyComponent() {
 ### Protecting Routes
 
 ```typescript
-import { AuthenticatedRoute } from "@octue/allauth-js/nextjs"
+import { AuthenticatedRoute } from "@windpioneers/allauth-js/nextjs"
 
 export default function ProtectedPage() {
   return (
@@ -150,7 +150,7 @@ export default function ProtectedPage() {
 ### Managing Emails
 
 ```typescript
-import { useEmails } from "@octue/allauth-js/react"
+import { useEmails } from "@windpioneers/allauth-js/react"
 
 function EmailManagement() {
   const { emails, addEmail, removeEmail, makePrimary, requestVerification } = useEmails()
@@ -181,8 +181,8 @@ function EmailManagement() {
 
 ```typescript
 import { useForm } from "react-hook-form"
-import { login } from "@octue/allauth-js/core"
-import { useSetErrors } from "@octue/allauth-js/react"
+import { login } from "@windpioneers/allauth-js/core"
+import { useSetErrors } from "@windpioneers/allauth-js/react"
 
 function LoginForm() {
   const { register, handleSubmit, setError, formState: { errors } } = useForm()
@@ -208,17 +208,17 @@ The example demonstrates the modular architecture of allauth-js:
 
 ### Core Functions (Framework Agnostic)
 ```typescript
-import { login, logout, signUp } from "@octue/allauth-js/core"
+import { login, logout, signUp } from "@windpioneers/allauth-js/core"
 ```
 
 ### React Hooks
 ```typescript
-import { useAuth, useUser, useEmails } from "@octue/allauth-js/react"
+import { useAuth, useUser, useEmails } from "@windpioneers/allauth-js/react"
 ```
 
 ### Next.js Components
 ```typescript
-import { AuthenticatedRoute, AnonymousRoute } from "@octue/allauth-js/nextjs"
+import { AuthenticatedRoute, AnonymousRoute } from "@windpioneers/allauth-js/nextjs"
 ```
 
 ### Custom Components

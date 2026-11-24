@@ -16,9 +16,9 @@ Build authentication flows in JS/React/Next.js applications backed by django-all
 ## Installation
 
 ```bash
-npm install @octue/allauth-js
+npm install @windpioneers/allauth-js
 # or
-pnpm add @octue/allauth-js
+pnpm add @windpioneers/allauth-js
 ```
 
 **Peer dependencies:** React 18+ (for react hooks and components), Next.js 15+ (for route guards)
@@ -49,11 +49,11 @@ If you're starting a new project, we recommend using `moduleResolution: "bundler
 
 ```tsx
 // pages/_app.tsx or app/layout.tsx
-import { AuthContextProvider } from '@octue/allauth-js/react'
+import { AuthContextProvider } from '@windpioneers/allauth-js/react'
 // If not using nextjs, you'll need to supply an equivalent to
 // AuthChangeRedirector that works with your routing solution...
 // Check the code, it's not too hard.
-import { AuthChangeRedirector } from '@octue/allauth-js/nextjs'
+import { AuthChangeRedirector } from '@windpioneers/allauth-js/nextjs'
 
 export default function App({ Component, pageProps }) {
   return (
@@ -81,7 +81,7 @@ Add the library to your Tailwind content paths and set the `allauth` color scale
 ```css
 /* Tailwind v4 - globals.css */
 @import "tailwindcss";
-@source "../node_modules/@octue/allauth-js/dist/**/*.{js,mjs}";
+@source "../node_modules/@windpioneers/allauth-js/dist/**/*.{js,mjs}";
 
 @theme inline {
   --color-allauth-50: #F1CFDA;
@@ -105,9 +105,9 @@ For Tailwind v3, use the preset:
 module.exports = {
   content: [
     './src/**/*.{js,tsx}',
-    './node_modules/@octue/allauth-js/dist/**/*.{js,mjs}',
+    './node_modules/@windpioneers/allauth-js/dist/**/*.{js,mjs}',
   ],
-  presets: [require('@octue/allauth-js/tailwind-preset')],
+  presets: [require('@windpioneers/allauth-js/tailwind-preset')],
 }
 ```
 
@@ -116,14 +116,14 @@ module.exports = {
 If you're not using Tailwind, import (or redefine yourself) the pre-compiled styles:
 
 ```tsx
-import '@octue/allauth-js/styles.css'
+import '@windpioneers/allauth-js/styles.css'
 ```
 
 ### 3. Use hooks and components
 
 ```tsx
-import { useUser, useAuthStatus } from '@octue/allauth-js/react'
-import { login, logout } from '@octue/allauth-js/core'
+import { useUser, useAuthStatus } from '@windpioneers/allauth-js/react'
+import { login, logout } from '@windpioneers/allauth-js/core'
 
 function Profile() {
   const { isAuthenticated } = useAuthStatus()
@@ -150,9 +150,9 @@ function Profile() {
 
 ```tsx
 import { useForm } from 'react-hook-form'
-import { login } from '@octue/allauth-js/core'
-import { Button, useSetErrors } from '@octue/allauth-js/react'
-import { AnonymousRoute } from '@octue/allauth-js/nextjs'
+import { login } from '@windpioneers/allauth-js/core'
+import { Button, useSetErrors } from '@windpioneers/allauth-js/react'
+import { AnonymousRoute } from '@windpioneers/allauth-js/nextjs'
 
 function LoginForm() {
   const { register, handleSubmit, setError, formState: { errors, isSubmitting } } = useForm()
@@ -186,8 +186,8 @@ export default function LoginPage() {
 ### Protected Route
 
 ```tsx
-import { AuthenticatedRoute } from '@octue/allauth-js/nextjs'
-import { useUser } from '@octue/allauth-js/react'
+import { AuthenticatedRoute } from '@windpioneers/allauth-js/nextjs'
+import { useUser } from '@windpioneers/allauth-js/react'
 
 function DashboardContent() {
   const { user } = useUser()
@@ -206,8 +206,8 @@ export default function Dashboard() {
 ### Email & Session Management
 
 ```tsx
-import { useEmails, useSessions, EmailsTable, SessionsTable } from '@octue/allauth-js/react'
-import { AuthenticatedRoute } from '@octue/allauth-js/nextjs'
+import { useEmails, useSessions, EmailsTable, SessionsTable } from '@windpioneers/allauth-js/react'
+import { AuthenticatedRoute } from '@windpioneers/allauth-js/nextjs'
 
 function SettingsPage() {
   const { emails, add, remove, makePrimary, verify, loading: emailsLoading } = useEmails()
@@ -248,7 +248,7 @@ export default function Settings() {
 
 ## API Reference
 
-### Hooks (`@octue/allauth-js/react`)
+### Hooks (`@windpioneers/allauth-js/react`)
 
 | Hook | Purpose |
 |------|---------|
@@ -260,7 +260,7 @@ export default function Settings() {
 | `useAuthChange()` | Detect auth state changes |
 | `useSetErrors()` | Map API errors to react-hook-form |
 
-### Components (`@octue/allauth-js/react`)
+### Components (`@windpioneers/allauth-js/react`)
 
 | Component | Purpose |
 |-----------|---------|
@@ -271,7 +271,7 @@ export default function Settings() {
 | `EmailsTableSkeleton` | Loading skeleton for emails |
 | `SessionsTableSkeleton` | Loading skeleton for sessions |
 
-### Core Functions (`@octue/allauth-js/core`)
+### Core Functions (`@windpioneers/allauth-js/core`)
 
 | Function | Purpose |
 |----------|---------|
@@ -285,7 +285,7 @@ export default function Settings() {
 | `confirmLoginCode(code)` | Confirm passwordless login |
 | `getAuth()` | Get current auth state |
 
-### Route Guards (`@octue/allauth-js/nextjs`)
+### Route Guards (`@windpioneers/allauth-js/nextjs`)
 
 | Component | Purpose |
 |-----------|---------|
@@ -298,15 +298,6 @@ export default function Settings() {
 
 Note that the development backend is not set up to send you emails via a third party provider.
 Instead, it'll simply print the plain text emails to the console. **For testing the email verification
-
-### The annoying .npmrc file
-
-The semantic release process requires a .npmrc file to be present with the template for the NPM_TOKEN but this creates errors if installing locally.
-
-Using `direnv` or `dotenv` with a `.env` file can fix it so you always have an NPM_TOKEN environment variable:
-```
-echo "NPM_TOKEN=whatever-we-onlly-publish-from-ci" > .env
-```
 
 ### Running the Example App
 

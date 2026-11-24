@@ -4,8 +4,8 @@ import {
   assertNever,
   getEmailVerification,
   verifyEmail,
-} from '@octue/allauth-js/core'
-import { Button } from '@octue/allauth-js/react'
+} from '@windpioneers/allauth-js/core'
+import { Button } from '@windpioneers/allauth-js/react'
 import { useRouter } from 'next/router'
 import { type FieldError, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'

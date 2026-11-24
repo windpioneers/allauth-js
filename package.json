@@ -1,17 +1,17 @@
 {
-  "name": "@octue/allauth-js",
+  "name": "@windpioneers/allauth-js",
   "version": "0.0.0-semantically-released",
   "description": "Allauth JS - using django allauth in headless mode for SPA frontends",
   "license": "GPL-3.0-only",
   "author": "Octue Ltd",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/octue/allauth-js.git"
+    "url": "git+https://github.com/windpioneers/allauth-js.git"
   },
   "bugs": {
-    "url": "https://github.com/octue/allauth-js/issues"
+    "url": "https://github.com/windpioneers/allauth-js/issues"
   },
-  "homepage": "https://github.com/octue/allauth-js#readme",
+  "homepage": "https://github.com/windpioneers/allauth-js#readme",
   "type": "module",
   "sideEffects": [
     "*.css"

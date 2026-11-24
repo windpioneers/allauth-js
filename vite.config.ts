@@ -17,7 +17,7 @@ export default defineConfig({
   build: {
     lib: {
       // Build multiple entry points so consumers can import subpaths like
-      // `@octue/allauth-js/react` or `@octue/allauth-js/nextjs` for better tree-shaking.
+      // `@windpioneers/allauth-js/react` or `@windpioneers/allauth-js/nextjs` for better tree-shaking.
       entry: {
         index: path.resolve(__dirname, 'src/index.ts'),
         'react/index': path.resolve(__dirname, 'src/react/index.ts'),

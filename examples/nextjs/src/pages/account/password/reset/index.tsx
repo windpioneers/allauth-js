@@ -1,7 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { assertNever, requestPasswordReset } from '@octue/allauth-js/core'
-import { AnonymousRoute } from '@octue/allauth-js/nextjs'
-import { Button } from '@octue/allauth-js/react'
+import {
+  assertNever,
+  requestPasswordReset,
+} from '@windpioneers/allauth-js/core'
+import { AnonymousRoute } from '@windpioneers/allauth-js/nextjs'
+import { Button } from '@windpioneers/allauth-js/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { type FieldError, useForm } from 'react-hook-form'

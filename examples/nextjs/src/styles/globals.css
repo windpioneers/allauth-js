@@ -4,7 +4,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* Include allauth-js library components in Tailwind's content scanning */
-@source "../../node_modules/@octue/allauth-js/dist/**/*.{js,mjs}";
+@source "../../node_modules/@windpioneers/allauth-js/dist/**/*.{js,mjs}";
 
 :root {
   --background: #ffffff;

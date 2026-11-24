@@ -1,5 +1,5 @@
-import { AuthenticatedRoute } from '@octue/allauth-js/nextjs'
-import { useUser } from '@octue/allauth-js/react'
+import { AuthenticatedRoute } from '@windpioneers/allauth-js/nextjs'
+import { useUser } from '@windpioneers/allauth-js/react'
 import { SettingsLayout } from '@/components/layout/SettingsLayout'
 
 function SettingsPage() {
