@@ -58,7 +58,7 @@ describe('getSafeNext', () => {
     ['/dashboard', '/dashboard'],
     ['/projects/1?tab=files#top', '/projects/1?tab=files#top'],
     [`${window.location.origin}/dashboard`, '/dashboard'],
-  ])('keeps the same-site path %s', (next, expected) => {
+  ])('keeps the same-origin path %s', (next, expected) => {
     expect(getSafeNext(routerWithNext(next))).toBe(expected)
   })
 
@@ -83,6 +83,28 @@ describe('getSafeNext', () => {
     'javascript:alert(1)',
   ])('refuses %j, which a browser would not keep on this site', (next) => {
     expect(getSafeNext(routerWithNext(next))).toBeNull()
+  })
+
+  it.each([
+    '/.//hacked-site.com',
+    '/%2e//hacked-site.com',
+    '/%2E//hacked-site.com',
+    '/..//hacked-site.com',
+    '/a/..//hacked-site.com',
+    '/./\\hacked-site.com',
+    '/.\\/hacked-site.com',
+    '\\/hacked-site.com',
+  ])(
+    'refuses %j, whose dot segments resolve to a path starting with //',
+    (next) => {
+      expect(getSafeNext(routerWithNext(next))).toBeNull()
+    }
+  )
+
+  it('refuses a URL of another protocol that keeps this origin', () => {
+    expect(
+      getSafeNext(routerWithNext(`blob:${window.location.origin}/1234`))
+    ).toBeNull()
   })
 
   it('returns null when rendering on the server', () => {
